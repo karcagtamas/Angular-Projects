@@ -1,0 +1,14 @@
+<div class="faq-container">
+  @for (faq of faqs; track faq) {
+  <div class="faq-item" (click)="toggleFAQ($index)">
+    <div class="faq-question">
+      {{ faq.question }}
+    </div>
+    @if ($index === openedIndex()) {
+    <div class="faq-answer" animate.enter="enter-animation" animate.leave="leave-animation">
+      {{ faq.answer }}
+    </div>
+    }
+  </div>
+  }
+</div>
