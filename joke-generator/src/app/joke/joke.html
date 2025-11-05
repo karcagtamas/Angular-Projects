@@ -1,0 +1,14 @@
+<div class="joke-container">
+  <h2>Random Joke Generator</h2>
+
+  <button type="button" (click)="fetchJoke()">Get a Random Joke</button>
+
+  @if (isLoading()) {
+  <div class="loading">Loading...</div>
+  } @if (error()) {
+  <div class="error">{{ error() }}</div>
+  } @if (joke() && !isLoading() && !error()) {
+  <p><strong>Setup:</strong>{{ joke()?.setup }}</p>
+  <p><strong>Punchline:</strong>{{ joke()?.punchline }}</p>
+  }
+</div>
