@@ -1,0 +1,12 @@
+<div class="clock">
+  @for(num of clockNumbers; track $index) {
+  <div class="number" [style.top]="num.position.top" [style.left]="num.position.left">
+    {{ num.number }}
+  </div>
+  }
+  <div class="center"></div>
+
+  <div class="hand hour" [style.transform]="'rotate(' + time().hours + 'deg)'"></div>
+  <div class="hand minute" [style.transform]="'rotate(' + time().minutes + 'deg)'"></div>
+  <div class="hand second" [style.transform]="'rotate(' + time().seconds + 'deg)'"></div>
+</div>
