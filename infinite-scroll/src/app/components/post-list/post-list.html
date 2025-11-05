@@ -1,0 +1,12 @@
+<div class="posts">
+  @for (post of posts(); track post.title) {
+  <app-post [post]="post" />
+  } @if (loading()) {
+
+  <div class="loading">Loading...</div>
+  } @if (error()) {
+  <div class="error">
+    {{ error() }}
+  </div>
+  }
+</div>
