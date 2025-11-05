@@ -1,0 +1,27 @@
+<div class="game-container">
+  <h1>Rock, Paper, Scissors</h1>
+
+  <div class="choices">
+    @for(choice of choices; track choice) {
+    <button type="button" (click)="play(choice)" [title]="choice">
+      <img [src]="choice + '.jpeg'" [alt]="choice" [title]="choice" />
+    </button>
+    }
+  </div>
+
+  @if (playerChoice() && computerChoice()) {
+  <div class="results">
+    <p>
+      You chose:
+      <strong>{{ playerChoice() }}</strong>
+      <img [src]="playerChoice() + '.jpeg'" [alt]="playerChoice()" [title]="playerChoice()" />
+    </p>
+    <p>
+      Computer chose:
+      <strong>{{ computerChoice() }}</strong>
+      <img [src]="computerChoice() + '.jpeg'" [alt]="computerChoice()" [title]="computerChoice()" />
+    </p>
+    <h2>{{ result() }}</h2>
+  </div>
+  }
+</div>
