@@ -1,0 +1,68 @@
+<div class="form-container">
+  <h2>Feedback Form</h2>
+
+  <form #feedbackForm="ngForm" (ngSubmit)="onSubmit(feedbackForm)">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        autocomplete="off"
+        [(ngModel)]="name"
+        #nameField="ngModel"
+        required
+      />
+      @if (nameField.invalid && nameField.touched) {
+      <div class="error">Name is required</div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        autocomplete="off"
+        [(ngModel)]="email"
+        #emailField="ngModel"
+        required
+        email
+      />
+      @if (emailField.invalid && emailField.touched) {
+      <div class="error">
+        @if (emailField.errors?.['required']) {
+        <div>Email is required</div>
+        } @if (emailField.errors?.['email']) {
+        <div>Invalid email format</div>
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="feedback">Feedback:</label>
+      <textarea
+        name="feedback"
+        id="feedback"
+        autocomplete="off"
+        [(ngModel)]="feedback"
+        #feedbackField="ngModel"
+        required
+      ></textarea>
+      @if (feedbackField.invalid && feedbackField.touched) {
+      <div class="error">Feedback is required</div>
+      }
+    </div>
+
+    <button type="submit" [disabled]="feedbackForm.invalid">Submit Feedback</button>
+  </form>
+
+  @if (submitted()) {
+  <div class="success">
+    <h3>Thank you for your feedback, {{ name() }}</h3>
+    <p>We will get back to you at {{ email() }}</p>
+  </div>
+  }
+</div>
