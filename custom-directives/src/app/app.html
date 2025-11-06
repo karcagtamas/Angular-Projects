@@ -1,0 +1,28 @@
+<h1>Hover Highlight Directive</h1>
+
+<p appHoverHighlight highlightColor="lightblue">Hover over me to see the lightblue highlight!</p>
+
+<p appHoverHighlight highlightColor="pink">Hover over me to see the pink highlight!</p>
+
+<p appHoverHighlight appTextTransform highlightColor="lightgreen">
+  Hover over me to see the lightgreen highlight!
+</p>
+
+<h2>Text Transform Directive</h2>
+
+<p appTextTransform>This text will be in uppercase.</p>
+
+<p appTextTransform transformType="lowercase">This text will be in lowercase.</p>
+
+<h3>Click Outside Directive</h3>
+
+<div appClickOutside>
+  <p appHoverHighlight>Click inside this div to log "Clicked inside the element!"</p>
+  <p>Click outside this div to log "Clicked outside the element!"</p>
+</div>
+
+<h3>Focus on Directive</h3>
+
+<p>When the page loads, the input field below will automatically be focused.</p>
+
+<input appFocusOn type="text" placeholder="Type here..." />
