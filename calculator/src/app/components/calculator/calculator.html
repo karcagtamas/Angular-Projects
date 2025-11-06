@@ -1,0 +1,14 @@
+<div class="calculator">
+  <app-display [value]="display" />
+  <div class="buttons">
+    @for(row of layout; track row) { @for (button of row; track button) {
+    <button
+      type="button"
+      [class.operator]="operators.includes(button)"
+      (click)="handleInput(button)"
+    >
+      {{ button }}
+    </button>
+    } }
+  </div>
+</div>
