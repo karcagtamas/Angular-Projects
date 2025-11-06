@@ -1,0 +1,101 @@
+<div class="container">
+  <h2>Contact Form</h2>
+
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        placeholder="Enter your name"
+        autocomplete="off"
+        formControlName="name"
+        [class.error]="name.touched && name.invalid"
+      />
+
+      @if (name.touched && name.invalid) {
+      <div class="error-message">
+        @if (name.errors?.['required']) {
+        <div>Name is required</div>
+        } @if (name.errors?.['minlength']) {
+        <div>Min length is 3 characters</div>
+        }
+      </div>
+      }
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter your email"
+        autocomplete="off"
+        formControlName="email"
+        [class.error]="email.touched && email.invalid"
+      />
+
+      @if (email.touched && email.invalid) {
+      <div class="error-message">
+        @if (email.errors?.['required']) {
+        <div>Email is required</div>
+        } @if (email.errors?.['email']) {
+        <div>Invalid email format</div>
+        }
+      </div>
+      }
+    </div>
+
+    <div>
+      <label for="subject">Subject:</label>
+      <input
+        type="text"
+        id="subject"
+        placeholder="Enter the subject"
+        autocomplete="off"
+        formControlName="subject"
+        [class.error]="subject.touched && subject.invalid"
+      />
+
+      @if (subject.touched && subject.invalid) {
+      <div class="error-message">
+        @if (subject.errors?.['required']) {
+        <div>Subject is required</div>
+        } @if (subject.errors?.['maxlength']) {
+        <div>Max length is 50 charachters</div>
+        }
+      </div>
+      }
+    </div>
+
+    <div>
+      <label for="message">Message:</label>
+      <textarea
+        name="message"
+        id="message"
+        rows="5"
+        autocomplete="off"
+        formControlName="message"
+        [class.error]="message.touched && message.invalid"
+      ></textarea>
+
+      @if (message.touched && message.invalid) {
+      <div class="error-message">
+        @if (message.errors?.['required']) {
+        <div>Message is required</div>
+        } @if (message.errors?.['minlength']) {
+        <div>Min length is 10 characters</div>
+        }
+      </div>
+      }
+    </div>
+
+    <button type="submit" [disabled]="contactForm.invalid">Submit</button>
+  </form>
+
+  @if (status() === 'success') {
+  <div class="success">Your message has been succesfully submitted!</div>
+  } @if (status() === 'error') {
+  <div class="failed">Failed to submit message. Please try again!</div>
+  }
+</div>
