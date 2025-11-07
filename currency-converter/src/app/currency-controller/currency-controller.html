@@ -1,0 +1,86 @@
+<div class="converter-container">
+  <h2>Currency Converter</h2>
+
+  <p class="subtitle">
+    The most accurate source of data. Powered by <span class="provider">ANGULAR</span>
+  </p>
+
+  <div class="row currency-row">
+    <div class="column currency-column">
+      <label for="sourceCurrency">From:</label>
+      <select
+        name="sourceCurrency"
+        id="sourceCurrency"
+        [(ngModel)]="sourceCurrency"
+        (ngModelChange)="convertCurrency()"
+      >
+        @for (currency of currencies; track currency) {
+        <option [value]="currency">{{ currencyDisplayTexts[currency] }}</option>
+        }
+      </select>
+    </div>
+    <div class="column currency-column">
+      <label for="targetCurrency">To:</label>
+      <select
+        name="targetCurrency"
+        id="targetCurrency"
+        title="Target Currency"
+        [(ngModel)]="targetCurrency"
+        (ngModelChange)="convertCurrency()"
+      >
+        @for (currency of currencies; track currency) {
+        <option [value]="currency">{{ currencyDisplayTexts[currency] }}</option>
+        }
+      </select>
+    </div>
+  </div>
+
+  <div class="row amount-row">
+    <div class="column amount-column">
+      <label for="amount">Amount:</label>
+      <input
+        type="number"
+        name="amount"
+        id="amount"
+        [(ngModel)]="amount"
+        placeholder="Enter amount"
+        (ngModelChange)="convertCurrency()"
+      />
+    </div>
+
+    <div class="column converted-column">
+      <label for="converted">Converted Amount:</label>
+      <input
+        type="text"
+        name="converted"
+        id="converted"
+        [value]="result() | currency : targetCurrency()"
+        readonly
+        placeholder="Converted amount"
+      />
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="convert-button"
+    (click)="convertCurrency()"
+    [disabled]="sourceCurrency() === targetCurrency()"
+  >
+    Convert
+  </button>
+
+  @if (conversionRate() !== null) {
+  <div class="results">
+    <div class="conversion-rate">
+      <h3>Conversion Rate:</h3>
+      <p>{{ conversionRate() }}</p>
+    </div>
+
+    <div class="converted-amount">
+      <h3>Converted Amount:</h3>
+      <p>{{ result() | currency : targetCurrency() }}</p>
+    </div>
+  </div>
+  }
+</div>
