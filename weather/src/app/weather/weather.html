@@ -1,0 +1,31 @@
+<div class="weather-app">
+  <form [formGroup]="weatherForm" (ngSubmit)="fetchWeather()">
+    <input type="text" formControlName="city" placeholder="Enter city name or coordinates" />
+    <button type="submit">Get weather</button>
+  </form>
+
+  @if (isLoading()) {
+  <div class="loading">Loading...</div>
+  } @if (error()) {
+  <div class="error">{{ error() }}</div>
+  } @if (weatherData()) {
+  <div class="weather-info">
+    <h2>Weather in {{ weatherData()?.name }}</h2>
+
+    <p>
+      <strong>Temperature:</strong> {{ weatherData()?.main?.temp }}
+      <span class="emoji">{{ weatherData()?.main?.temp | temperatureEmoji }}</span>
+    </p>
+
+    <p>
+      <strong>Humidity:</strong> {{ weatherData()?.main?.humidity }}
+      <span class="emoji">{{ weatherData()?.main?.humidity | humidityEmoji }}</span>
+    </p>
+
+    <p>
+      <strong>Description:</strong> {{ description() }}
+      <span class="emoji">{{ description() | descriptionEmoji }}</span>
+    </p>
+  </div>
+  }
+</div>
