@@ -1,0 +1,39 @@
+<div class="checkers-container">
+  @if (!gameService.gameOver) {
+  <h2>
+    Current Player:
+    <span [style.color]="gameService.currentPlayer">{{
+      gameService.currentPlayer | uppercase
+    }}</span>
+  </h2>
+  } @if (gameService.gameOver) {
+  <h3>Game Over! {{ gameService.currentPlayer === 'red' ? 'Black' : 'Red' }} wins!</h3>
+  }
+
+  <div class="board">
+    @for (row of gameService.board; track row; let $rowIndex = $index) {
+    <div class="row">
+      @for (cell of row;track cell) {
+      <div
+        class="cell"
+        [ngClass]="{
+          'dark-cell': ($rowIndex + $index) % 2 === 1,
+          selected: isSelected($rowIndex, $index)
+        }"
+        (click)="onCellClick($rowIndex, $index)"
+      >
+        @if (cell) {
+        <div class="piece" [ngClass]="cell">
+          @if (cell.includes('king')) {
+          <span class="king-symbol"></span>
+          }
+        </div>
+        }
+      </div>
+      }
+    </div>
+    }
+  </div>
+
+  <button type="button" class="reset-button" (click)="resetGame()">Reset Game</button>
+</div>
