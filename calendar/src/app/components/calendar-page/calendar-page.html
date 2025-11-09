@@ -1,0 +1,13 @@
+<div class="calendar-menu">
+  <button class="calendar-button" (click)="previousMonth()">Previous</button>
+  <span>{{ monthAndYear() }}</span>
+  <button class="calendar-button" (click)="nextMonth()">Next</button>
+</div>
+
+@if (days().length > 0) {
+<div class="calendar-grid">
+  @for (day of days(); track day){
+  <app-day-card [day]="day" />
+  }
+</div>
+}

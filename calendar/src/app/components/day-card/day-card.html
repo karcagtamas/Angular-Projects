@@ -1,0 +1,4 @@
+<div class="day-card" [class.today]="isToday()" [class.past]="isPast()">
+  <div class="day">{{ day() | date : 'dd' }}</div>
+  <div class="day-name">{{ day() | date : 'EEEE' }}</div>
+</div>
