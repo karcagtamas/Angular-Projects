@@ -1,0 +1,24 @@
+.cell {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+
+  &.revealed {
+    background-color: #ddd;
+  }
+
+  &.flagged {
+    background-color: yellow;
+  }
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+}

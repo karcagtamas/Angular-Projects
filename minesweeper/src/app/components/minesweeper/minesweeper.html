@@ -1,0 +1,29 @@
+<div class="game-container">
+  <app-timer />
+
+  <div class="grid">
+    @for(row of gameService.grid; track row; let rowIndex = $index) {
+    <div class="row">
+      @for (cell of row; track cell) {
+      <app-cell
+        [row]="rowIndex"
+        [col]="$index"
+        [cell]="cell"
+        (cellClicked)="onCellClick($event)"
+        (cellFlagged)="onCellFlagged($event)"
+      />
+      }
+    </div>
+    }
+  </div>
+
+  @if (gameService.gameOver) {
+  <div class="game-status">
+    @if (gameService.gameWon) {
+    <p class="won">Congratulations! You won!</p>
+    } @else {
+    <p class="lost">Game over! You hit a mine!</p>
+    }
+  </div>
+  }
+</div>

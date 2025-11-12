@@ -1,0 +1,12 @@
+<div
+  class="cell"
+  [ngClass]="{ revealed: cell().isRevealed, flagged: cell().isFlagged }"
+  (click)="onLeftClick()"
+  (contextmenu)="onRightClick($event)"
+>
+  @if (cell().isRevealed) { @if (cell().isMine) {
+  <span>💣</span>
+  } @else {
+  {{ cell().adjacentMines || '' }}
+  } }
+</div>
