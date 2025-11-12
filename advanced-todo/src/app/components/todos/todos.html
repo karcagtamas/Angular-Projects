@@ -1,0 +1,64 @@
+<div class="content-container">
+  <div class="user-info">
+    <h2>{{ selectedUser() ? selectedUser()?.name : 'Select a User' }}</h2>
+    <select id="user-selector" [(ngModel)]="selectedUserId" (ngModelChange)="onUserSelect()">
+      <option value="" selected disabled>Select User</option>
+
+      @for (user of users(); track user.id) {
+      <option [value]="user.id">{{ user.name }}</option>
+      }
+    </select>
+
+    <div class="new-todo-container" id="new-todo-container">
+      <h3>Add new Todo</h3>
+      <input
+        type="text"
+        id="new-todo-title"
+        placeholder="Enter new todo..."
+        [(ngModel)]="newTodoTitle"
+      />
+      <button id="add-todo-button" (click)="addTodo()">Add Todo</button>
+    </div>
+  </div>
+
+  @if (selectedUser()) {
+  <div class="todo-list-container">
+    <h3>Todo List</h3>
+    <ul id="todo-list">
+      @for (todo of todos(); track todo.id) {
+      <li class="todo-item" [class.completed]="todo.completed">
+        <input type="checkbox" [(ngModel)]="todo.completed" />
+        <label>{{ todo.title }}</label>
+        <div class="todo-actions">
+          <div class="icon edit-icon" (click)="openEditModal(todo)">
+            <img src="edit.svg" alt="Edit todo" />
+          </div>
+          <div class="icon delete-icon" (click)="deleteTodo(todo.id)">
+            <img src="delete.svg" alt="Delete Todo" />
+          </div>
+        </div>
+      </li>
+      }
+    </ul>
+  </div>
+  }
+</div>
+
+@if (currentEditingTodoId()) {
+
+<div class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Edit Todo</h2>
+      <span class="close" (click)="currentEditingTodoId.set(null)">&times;</span>
+    </div>
+    <div class="modal-body">
+      <input [(ngModel)]="currentEditingTodoTitle" placeholder="Edit todo" />
+    </div>
+    <div class="modal-footer">
+      <button (click)="saveChanges(currentEditingTodoTitle())">Save</button>
+    </div>
+  </div>
+</div>
+
+}

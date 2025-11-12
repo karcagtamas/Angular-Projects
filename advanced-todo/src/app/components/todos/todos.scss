@@ -1,0 +1,259 @@
+$content-bg: linear-gradient(to bottom right, #eaf4ff, #c7e0ff);
+$primary: #2890ff;
+$primary-dark: #176fce;
+$text-muted: #555;
+
+.content-container {
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.user-info {
+  flex: 1;
+  min-width: 250px;
+
+  h2 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    color: $text-muted;
+  }
+
+  #user-selector {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    transition:
+      border-color 0.3s,
+      box-shadow 0.3s;
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 6px rgba($primary, 0.4);
+      outline: none;
+    }
+  }
+}
+
+.new-todo-container {
+  background: linear-gradient(to bottom right, #f0f9ff, #cce6ff);
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  h3 {
+    font-size: 1.2em;
+    margin-bottom: 12px;
+    color: $text-muted;
+  }
+
+  #new-todo-title {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    margin-bottom: 10px;
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 5px rgba($primary, 0.4);
+      outline: none;
+    }
+  }
+
+  #add-todo-button {
+    width: 100%;
+    background-color: $primary;
+    color: white;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition:
+      background-color 0.3s,
+      transform 0.2s;
+
+    &:hover {
+      background-color: $primary-dark;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+}
+
+.todo-list-container {
+  flex: 2.5;
+  background: $content-bg;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+
+  h3 {
+    font-size: 1.4em;
+    margin-bottom: 12px;
+    color: $text-muted;
+  }
+
+  #todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .todo-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 10px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #f9f9f9;
+      }
+
+      input[type="checkbox"] {
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+
+      label {
+        flex-grow: 1;
+        margin-left: 12px;
+        font-size: 1em;
+      }
+
+      &.completed {
+        label {
+          text-decoration: line-through;
+          color: #999;
+        }
+      }
+
+      .todo-actions {
+        display: flex;
+        align-items: center;
+
+        .icon {
+          width: 20px;
+          height: 20px;
+          margin-left: 12px;
+          cursor: pointer;
+          opacity: 0.8;
+          transition: opacity 0.2s;
+
+          &:hover {
+            opacity: 1;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background: $content-bg;
+  padding: 25px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      font-size: 1.4em;
+      color: $text-muted;
+      margin: 0;
+    }
+
+    .close {
+      font-size: 1.6em;
+      font-weight: bold;
+      color: $primary;
+      cursor: pointer;
+
+      &:hover {
+        color: $primary-dark;
+      }
+    }
+  }
+
+  .modal-body {
+    margin-top: 15px;
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+
+      &:focus {
+        border-color: $primary;
+        box-shadow: 0 0 5px rgba($primary, 0.4);
+        outline: none;
+      }
+    }
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+
+    button {
+      background-color: $primary;
+      color: #fff;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+      transition:
+        background-color 0.3s,
+        transform 0.2s;
+
+      &:hover {
+        background-color: $primary-dark;
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(1px);
+      }
+    }
+  }
+}
