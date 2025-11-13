@@ -1,0 +1,113 @@
+<div class="resume-container">
+  <div class="resume" #resume>
+    <div class="resume-columns">
+      <div class="left-column">
+        <div class="photo-container">
+          @if (photoUrl()) {
+          <img class="profile-photo" [src]="photoUrl()" alt="Resume photo" />
+          }
+        </div>
+
+        <h1 class="resume-title">{{ resumeDataService.name }}</h1>
+
+        <section class="contact">
+          @if (isNotEmpty(resumeDataService.email)) {
+          <div>
+            <b>Email: </b>
+            <span class="contact-info">{{ resumeDataService.email }}</span>
+          </div>
+          } @if (isNotEmpty(resumeDataService.phone)) {
+          <div>
+            <b>Phone: </b>
+            <span class="contact-info">{{ resumeDataService.phone }}</span>
+          </div>
+          } @if (hasNonEmptyItems(resumeDataService.address)) {
+          <div>
+            <b>Address: </b>
+            @for (address of resumeDataService.address; track address) { @if (isNotEmpty(address)) {
+            <span class="contact-info">{{ address }}</span>
+            } }
+          </div>
+          } @if (hasNonEmptyItems(resumeDataService.links)) {
+          <div class="links">
+            <b>Links: </b>
+            @for (link of resumeDataService.links; track link) { @if (isNotEmpty(link)) {
+            <p class="contact-info">{{ link }}</p>
+            } }
+          </div>
+          } @if (hasNonEmptyItems(resumeDataService.languages)) {
+          <div class="languages">
+            <b>Languages: </b>
+            <ul>
+              @for (language of resumeDataService.languages; track language) { @if
+              (isNotEmpty(language)) {
+              <li class="contact-info">{{ language }}</li>
+              } }
+            </ul>
+          </div>
+          }
+        </section>
+      </div>
+
+      <div class="right-column">
+        @if (isNotEmpty(resumeDataService.aboutMe)) {
+        <section>
+          <h3>About Me:</h3>
+          <p>{{ resumeDataService.aboutMe }}</p>
+        </section>
+        } @if (hasNonEmptyItems(resumeDataService.education)) {
+        <section>
+          <h3>Education:</h3>
+          <ul>
+            @for (education of resumeDataService.education; track education) { @if
+            (isNotEmpty(education)) {
+            <li>{{ education }}</li>
+            } }
+          </ul>
+        </section>
+        } @if (hasNonEmptyItems(resumeDataService.experience)) {
+        <section>
+          <h3>Experience:</h3>
+          <ul>
+            @for (experience of resumeDataService.experience; track experience) { @if
+            (isNotEmpty(experience)) {
+            <li>{{ experience }}</li>
+            } }
+          </ul>
+        </section>
+        } @if (hasNonEmptyItems(resumeDataService.skills)) {
+        <section>
+          <h3>Skills:</h3>
+          <ul>
+            @for (skill of resumeDataService.skills; track skill) { @if (isNotEmpty(skill)) {
+            <li>{{ skill }}</li>
+            } }
+          </ul>
+        </section>
+        } @if (hasNonEmptyProjects(resumeDataService.projects)) {
+        <section class="projects">
+          <h3>Projects:</h3>
+          <ul>
+            @for (project of resumeDataService.projects; track project) { @if
+            (isNotEmpty(project.name)) {
+            <li>
+              <b>{{ project.name }}</b>
+              <p>{{ project.description }}</p>
+            </li>
+            } }
+          </ul>
+        </section>
+        } @if (hasNonEmptyItems(resumeDataService.courses)) {
+        <section>
+          <h3>Courses:</h3>
+          <ul>
+            @for (course of resumeDataService.courses; track course) { @if (isNotEmpty(course)) {
+            <li>{{ course }}</li>
+            } }
+          </ul>
+        </section>
+        }
+      </div>
+    </div>
+  </div>
+</div>

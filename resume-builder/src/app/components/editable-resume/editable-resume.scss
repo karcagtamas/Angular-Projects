@@ -1,0 +1,52 @@
+.container {
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 70px;
+  border-radius: 5px;
+  padding: 40px;
+  background-color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  .editable-resume {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9fafb;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .photo-guideline {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .left-column,
+    .right-column {
+      margin-bottom: 20px;
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin: 10px 0 5px;
+        font-size: 23px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 9px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+    }
+  }
+}

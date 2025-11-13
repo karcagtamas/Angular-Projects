@@ -1,0 +1,94 @@
+.resume {
+  width: 190mm;
+  height: 277mm;
+  background-color: white;
+  margin: 20px auto;
+  overflow: hidden;
+
+  .resume-columns {
+    display: flex;
+    height: 100%;
+
+    .left-column {
+      width: 35%;
+      padding: 4mm;
+      padding-right: 10mm;
+      background-color: #106095;
+      color: white;
+
+      .photo-container {
+        text-align: center;
+        margin-bottom: 3mm;
+
+        .profile-photo {
+          width: 47mm;
+          height: auto;
+          border-radius: 50%;
+          max-width: 177.6px;
+          max-height: 177.6px;
+        }
+      }
+
+      h1.resume-title {
+        color: white;
+        font-size: 21pt;
+        text-align: center;
+        margin-bottom: 10mm;
+      }
+
+      section {
+        margin-bottom: 10mm;
+
+        h3 {
+          font-size: 14pt;
+          display: inline-block;
+          margin-bottom: 5mm;
+        }
+
+        &.contact {
+          div,
+          ul {
+            margin-bottom: 14px;
+          }
+
+          .contact-info {
+            display: block;
+          }
+
+          .links p {
+            margin-top: 1px;
+          }
+
+          .languages ul {
+            margin-top: 6px;
+          }
+        }
+      }
+    }
+
+    .right-column {
+      width: 60%;
+      padding: 7mm;
+      padding-top: 14mm;
+
+      section {
+        margin-bottom: 20px;
+
+        h3 {
+          color: darkblue;
+          border-bottom: 2px solid #007acc;
+          padding-bottom: 2px;
+          margin-bottom: 8px;
+        }
+
+        li {
+          line-height: 2rem;
+        }
+
+        &.projects li {
+          margin-bottom: 4px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="editable-resume">
+    <h1>Edit Resume</h1>
+
+    <div class="left-column">
+      <label for="photo">Photo: </label>
+      <input
+        type="file"
+        id="photo"
+        name="photo"
+        (change)="onFileSelected($event)"
+        accept="image/*"
+      />
+
+      <small class="photo-guideline"> Please upload a photo with equal with and height </small>
+
+      <label for="name">Name: </label>
+      <input type="text" id="name" name="name" [(ngModel)]="resumeDataService.name" />
+
+      <label for="email">Email: </label>
+      <input type="email" id="email" name="email" [(ngModel)]="resumeDataService.email" />
+
+      <label for="phone">Phone: </label>
+      <input type="tel" id="phone" name="phone" [(ngModel)]="resumeDataService.phone" />
+
+      <label for="links">Links: </label>
+      @for (i of [0, 1, 2, 3]; track i) {
+      <div>
+        <input type="text" [(ngModel)]="resumeDataService.links[i]" />
+      </div>
+      }
+
+      <label for="languages">Languages: </label>
+      @for (i of [0, 1, 2, 3]; track i) {
+      <div>
+        <input type="text" [(ngModel)]="resumeDataService.languages[i]" />
+      </div>
+      }
+    </div>
+
+    <div class="right-column">
+      <label for="aboutMe">About Me: </label>
+      <textarea rows="6" id="name" name="name" [(ngModel)]="resumeDataService.aboutMe"></textarea>
+
+      <label for="skills">Skills: </label>
+      @for (i of [0, 1, 2, 3]; track i) {
+      <div>
+        <input type="text" [(ngModel)]="resumeDataService.skills[i]" />
+      </div>
+      }
+
+      <label for="experience">Experience: </label>
+      @for (i of [0, 1, 2, 3]; track i) {
+      <div>
+        <input type="text" [(ngModel)]="resumeDataService.experience[i]" />
+      </div>
+      }
+
+      <label for="education">Education: </label>
+      @for (i of [0, 1, 2, 3]; track i) {
+      <div>
+        <input type="text" [(ngModel)]="resumeDataService.education[i]" />
+      </div>
+      }
+
+      <label for="projects">Projects: </label>
+      @for (i of [0, 1, 2]; track i) {
+      <div>
+        <input type="text" [(ngModel)]="resumeDataService.projects[i].name" />
+        <textarea rows="5" [(ngModel)]="resumeDataService.projects[i].description"></textarea>
+      </div>
+      }
+
+      <label for="courses">Courses: </label>
+      @for (i of [0, 1, 2, 3]; track i) {
+      <div>
+        <input type="text" [(ngModel)]="resumeDataService.courses[i]" />
+      </div>
+      }
+    </div>
+  </div>
+</div>
