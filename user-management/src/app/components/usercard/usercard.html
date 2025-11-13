@@ -1,0 +1,91 @@
+<div class="user-card">
+  <div class="user-actions">
+    <div class="edit" title="Edit" (click)="onEdit()">
+      <img src="edit.svg" alt="Edit" />
+    </div>
+    <div class="delete" title="Delete" (click)="onDelete()">
+      <img src="delete.svg" alt="Delete" />
+    </div>
+  </div>
+
+  <h2 class="user-name">{{ user().name }}</h2>
+  <div class="user-details">
+    <p><strong>Username: </strong>{{ user().username }}</p>
+    <p><strong>Email: </strong>{{ user().email }}</p>
+    <p><strong>Phone: </strong>{{ user().phone }}</p>
+    <p>
+      <strong>Website: </strong
+      ><a rel="noopener" href="http://{{ user().website }}" target="_blank" class="user-link">{{
+        user().website
+      }}</a>
+    </p>
+  </div>
+</div>
+
+@if (isEditModalOpen()) {
+<div class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Edit User</h2>
+      <span class="close" (click)="closeModal()">&times;</span>
+    </div>
+
+    <div class="modal-body">
+      <label for="edit-name">Name:</label>
+      <input
+        type="text"
+        name="edit-name"
+        id="edit-name"
+        [(ngModel)]="editUser().name"
+        placeholder="Enter name"
+        required
+      />
+
+      <label for="edit-username">Username:</label>
+      <input
+        type="text"
+        name="edit-username"
+        id="edit-username"
+        [(ngModel)]="editUser().username"
+        placeholder="Enter username"
+        required
+      />
+
+      <label for="edit-email">Email:</label>
+      <input
+        type="email"
+        name="edit-email"
+        id="edit-email"
+        [(ngModel)]="editUser().email"
+        placeholder="Enter email"
+        required
+      />
+
+      <label for="edit-phone">Phone:</label>
+      <input
+        type="text"
+        name="edit-phone"
+        id="edit-phone"
+        [(ngModel)]="editUser().phone"
+        placeholder="Enter phone"
+        required
+      />
+
+      <label for="edit-website">Website:</label>
+      <input
+        type="text"
+        name="edit-website"
+        id="edit-website"
+        [(ngModel)]="editUser().website"
+        placeholder="Enter website"
+        required
+      />
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" (click)="saveChanges()">Save Changes</button>
+      <button type="button" (click)="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+}

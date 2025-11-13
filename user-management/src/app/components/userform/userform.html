@@ -1,0 +1,47 @@
+<div class="user-form-container">
+  <h2>Add New User</h2>
+
+  <form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm" novalidate autocomplete="off">
+    <input
+      type="text"
+      id="name"
+      placeholder="Name"
+      [(ngModel)]="newUser().name"
+      name="name"
+      required
+    />
+    <input
+      type="text"
+      id="username"
+      placeholder="Username"
+      [(ngModel)]="newUser().username"
+      name="username"
+      required
+    />
+    <input
+      type="email"
+      id="email"
+      placeholder="Email"
+      [(ngModel)]="newUser().email"
+      name="email"
+      required
+    />
+    <input
+      type="text"
+      id="phone"
+      placeholder="Phone"
+      [(ngModel)]="newUser().phone"
+      name="phone"
+      required
+    />
+    <input
+      type="text"
+      id="website"
+      placeholder="Website"
+      [(ngModel)]="newUser().website"
+      name="website"
+      required
+    />
+    <button type="submit" [disabled]="!userForm.form.valid">Add User</button>
+  </form>
+</div>
