@@ -1,0 +1,36 @@
+<div class="quiz-container">
+  @if (quiz()) {
+  <h1>{{ quiz()!.title }}</h1>
+
+  @if (!isComplete()) {
+  <div>
+    @for (question of quiz()?.questions; track question.text) {
+    <div>
+      <p>Question {{ $index + 1 }}/{{ quiz()!.questions!.length }}</p>
+
+      <app-question [question]="question" (answerSelected)="handleAnswer($event, $index)" />
+      <hr />
+    </div>
+    }
+  </div>
+  } @else {
+  <h2>Quiz Complete!</h2>
+
+  <p>Your score: {{ getScore() }}/{{ quiz()?.questions?.length }}</p>
+  <p>You score percentage: {{ scoring().percentage }}%</p>
+
+  <div>
+    @switch(scoring().percentage) { @case (100) {
+    <div>Excellent! All correct answers!</div>
+    } @case (0) {
+    <div>All wrong answers! Stop trolling!</div>
+    } @default {
+    <div>Better luck next time!</div>
+    } }
+  </div>
+
+  <button type="button" (click)="goToMainMenu()">Back to Main Menu</button>
+  } } @else {
+  <h2>Loading Quiz...</h2>
+  }
+</div>

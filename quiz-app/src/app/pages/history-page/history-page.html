@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Quiz History</h1>
+
+  @if (history().length > 0) {
+  <div>
+    <ul>
+      @for (entry of history(); track entry) {
+      <li>
+        <div class="history-item">
+          <p>
+            <strong>{{ entry.quizTitle }}</strong>
+          </p>
+          <p>Score: {{ entry.score }}/{{ entry.maxScore }}</p>
+          <p>Date: {{ entry.date | customDate : 'short' }}</p>
+        </div>
+      </li>
+      }
+    </ul>
+  </div>
+  } @else {
+  <p>No history available</p>
+  }
+</div>

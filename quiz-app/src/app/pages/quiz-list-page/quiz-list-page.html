@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Available Quizzes</h1>
+  <div class="quiz-grid">
+    @for (quiz of quizzes(); track quiz.title) {
+    <div class="quiz-card">
+      <h3>{{ quiz.title }}</h3>
+      <button type="button" (click)="takeQuiz($index)">Take Quiz</button>
+    </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="container">
+  <h1>Create a new Quiz</h1>
+
+  <form class="quiz-form" (ngSubmit)="onSubmit()" [formGroup]="quizForm">
+    <div class="form-group">
+      <label for="title" class="form-label">Quiz title</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        class="form-control"
+        formControlName="title"
+        placeholder="Enter quiz name"
+      />
+      @if (quizForm.get('title')?.invalid && quizForm.get('title')?.touched) {
+      <div class="error-message">Quiz title is required</div>
+      }
+
+      <div class="questions-container" formArrayName="questions">
+        @for (question of questions.controls; track question; let i = $index) {
+        <div class="question-group" [formGroupName]="i">
+          <div class="form-group">
+            <label class="form-label"> Question {{ i + 1 }}</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter question text"
+              formControlName="text"
+            />
+
+            @if (question.get('text')?.invalid && question.get('text')?.touched) {
+            <div class="error-message">Question is required</div>
+            }
+          </div>
+
+          <div class="options-container" formArrayName="options">
+            @for (option of getOptions(i).controls; track option; let j = $index) {
+
+            <div class="option-group" [formGroupName]="j">
+              <div class="form-group">
+                <label class="form-label">Option {{ j + 1 }}</label>
+                <input
+                  type="text"
+                  placeholder="Enter option text"
+                  class="form-control"
+                  formControlName="text"
+                />
+
+                @if (option.get('text')?.invalid && option.get('text')?.touched) {
+                <div class="error-message">Option text is required!</div>
+                }
+              </div>
+
+              <div class="form-group checkbox-group">
+                <input type="checkbox" formControlName="isCorrect" />
+                <label>Correct answer</label>
+              </div>
+
+              <button class="btn btn-danger" (click)="removeOption(i, j)" type="button">
+                Remove option
+              </button>
+            </div>
+            }
+          </div>
+
+          <button type="button" (click)="addOption(i)" class="btn btn-secondary">Add option</button>
+
+          <button type="button" (click)="removeQuestion(i)" class="btn btn-danger mt-2">
+            Remove question
+          </button>
+        </div>
+        }
+      </div>
+
+      <div class="button-group">
+        <button type="button" class="btn btn-primary" (click)="addQuestion()">Add question</button>
+
+        <button type="submit" [disabled]="quizForm.invalid" class="btn btn-success btn-submit">
+          Submit Quiz
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
