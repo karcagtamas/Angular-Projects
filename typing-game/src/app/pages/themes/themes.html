@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <div class="title-section">
+    <h1>Themes</h1>
+  </div>
+
+  @if (showContent()) {
+  <div class="theme-container">
+    @for (theme of themes; track theme.name) {
+    <div class="theme-option" (click)="selectTheme(theme.name)">
+      <span class="theme-name">{{ theme.displayName }}</span>
+
+      <div class="theme-preview">
+        @for (color of theme.colors; track color) {
+        <span class="color-dot" [style.backgroundColor]="color"></span>
+        }
+      </div>
+    </div>
+    }
+  </div>
+  }
+</div>

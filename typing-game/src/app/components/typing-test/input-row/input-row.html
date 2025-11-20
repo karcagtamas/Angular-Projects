@@ -1,0 +1,17 @@
+<div class="input-row">
+  @if (showContent()) {
+  <input
+    #wordInput
+    type="text"
+    id="word-input"
+    placeholder="Start typing..."
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    (input)="onInputChange()"
+    (keydown)="onKeydown($event)"
+  />
+
+  <button id="redo" (click)="onRedoClick()">Redo</button>
+  }
+</div>

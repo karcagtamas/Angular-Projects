@@ -1,0 +1,17 @@
+<div class="word-display">
+  @if (showContent()) { @for (word of gameService.words; track word; let $i = $index) {
+  <span class="word" [ngClass]="{ 'current-word': $i === gameService.currentWordIndex }">
+    @for (letter of word.split(''); track letter) {
+    <span
+      class="letter"
+      [ngClass]="{
+        correct: gameService.letterStatus[$i][$index].correct === true,
+        incorrect: gameService.letterStatus[$i][$index].correct === false
+      }"
+    >
+      {{ letter }}</span
+    >
+    }
+  </span>
+  } }
+</div>

@@ -1,0 +1,44 @@
+<div class="wrapper">
+  <div class="title-section">
+    <h1>Leaderboard</h1>
+  </div>
+
+  <div class="leaderboard">
+    @if (showContent()) { @if (leaderboard().length > 0) {
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Username</th>
+          <th>Clean speed(WPM)</th>
+          <th>Raw speed(WPM)</th>
+          <th>Accuracy(%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (entry of leaderboard(); track entry) {
+        <tr>
+          <td>{{ (currentPage() - 1) * pageSize() + $index + 1 }}</td>
+          <td>{{ entry.username }}</td>
+          <td>{{ entry.cleanSpeed }}</td>
+          <td>{{ entry.rawSpeed }}</td>
+          <td>{{ entry.accuracy }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    } @else if(showLeaderboardMessage()) {
+    <p>No leaderboard data available.</p>
+    } }
+  </div>
+
+  @if (leaderboard().length > 0) {
+  <div class="pagination">
+    @if (showContent()) {
+    <button (click)="previousPage()" [disabled]="currentPage() === 1">Previous</button>
+    <span>Page {{ currentPage() }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage() === totalPages()">Next</button>
+    }
+  </div>
+  }
+</div>
