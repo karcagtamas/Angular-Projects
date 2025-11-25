@@ -1,0 +1,28 @@
+.main-container-introduction {
+  margin-top: 1%;
+
+  .introduction-section {
+    min-width: 700px;
+    width: 40vw;
+
+    h1,
+    p {
+      margin-bottom: 5px;
+    }
+
+    p {
+      width: 100%;
+      max-width: 550px;
+    }
+
+    .introduction-section-paragraph {
+      margin-top: 2.25%;
+    }
+  }
+
+  #my-role {
+    color: #c6c6c6;
+    min-width: 40vw;
+    min-width: 710px;
+  }
+}
